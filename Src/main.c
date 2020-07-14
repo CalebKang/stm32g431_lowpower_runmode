@@ -234,9 +234,9 @@ void SystemClock_Decrease(void)
 void SystemPower_Config(void)
 {
 	/*** Peripharel Disable ***/
-  LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_SPI1);
-  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_SPI2);
-  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_SPI3);
+  LL_APB2_GRP1_DisableClock(LL_APB2_GRP1_PERIPH_SPI1);
+  LL_APB1_GRP1_DisableClock(LL_APB1_GRP1_PERIPH_SPI2);
+  LL_APB1_GRP1_DisableClock(LL_APB1_GRP1_PERIPH_SPI3);
 
 	
 	/*** GPIO Disable ***/
