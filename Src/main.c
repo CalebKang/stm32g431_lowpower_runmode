@@ -21,6 +21,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "usart.h"
+#include "spi.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -102,6 +103,9 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_LPUART1_UART_Init();
+  MX_SPI1_Init();
+  MX_SPI2_Init();
+  MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -140,6 +144,13 @@ void SystemClock_Config(void)
 {
   LL_FLASH_SetLatency(LL_FLASH_LATENCY_8);
   LL_PWR_EnableRange1BoostMode();
+  LL_RCC_HSE_Enable();
+
+   /* Wait till HSE is ready */
+  while(LL_RCC_HSE_IsReady() != 1)
+  {
+    
+  }
   LL_RCC_HSI_Enable();
 
    /* Wait till HSI is ready */
@@ -148,7 +159,7 @@ void SystemClock_Config(void)
     
   }
   LL_RCC_HSI_SetCalibTrimming(64);
-  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSI, LL_RCC_PLLM_DIV_4, 85, LL_RCC_PLLR_DIV_2);
+  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSE, LL_RCC_PLLM_DIV_6, 85, LL_RCC_PLLR_DIV_2);
   LL_RCC_PLL_EnableDomain_SYS();
   LL_RCC_PLL_Enable();
 
@@ -196,6 +207,7 @@ void SystemClock_Decrease(void)
   LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_HSI);
   LL_RCC_PLL_DisableDomain_SYS();
   LL_RCC_PLL_Disable();
+  LL_RCC_HSE_Disable();
 
    /* Wait till System clock is ready */
   while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_HSI)
@@ -221,6 +233,13 @@ void SystemClock_Decrease(void)
 
 void SystemPower_Config(void)
 {
+	/*** Peripharel Disable ***/
+  LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_SPI1);
+  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_SPI2);
+  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_SPI3);
+
+	
+	/*** GPIO Disable ***/
   LL_GPIO_InitTypeDef gpio_initstruct = {LL_GPIO_PIN_ALL, LL_GPIO_MODE_ANALOG, 
                                          LL_GPIO_SPEED_FREQ_LOW, LL_GPIO_OUTPUT_PUSHPULL, 
                                          LL_GPIO_PULL_NO, LL_GPIO_AF_0};

@@ -346,7 +346,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>4</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -362,9 +362,9 @@
             <useXO>0</useXO>
             <VariousControls>
               <MiscControls/>
-              <Define>STM32G431xx,USE_FULL_LL_DRIVER,HSE_VALUE=8000000,HSE_STARTUP_TIMEOUT=100,LSE_STARTUP_TIMEOUT=5000,LSE_VALUE=32768,EXTERNAL_CLOCK_VALUE=12288000,HSI_VALUE=16000000,LSI_VALUE=32000,VDD_VALUE=3300,PREFETCH_ENABLE=0,INSTRUCTION_CACHE_ENABLE=0,DATA_CACHE_ENABLE=0</Define>
+              <Define>STM32G431xx,USE_FULL_LL_DRIVER,HSE_VALUE=24000000,HSE_STARTUP_TIMEOUT=100,LSE_STARTUP_TIMEOUT=5000,LSE_VALUE=32768,EXTERNAL_CLOCK_VALUE=12288000,HSI_VALUE=16000000,LSI_VALUE=32000,VDD_VALUE=3300,PREFETCH_ENABLE=0,INSTRUCTION_CACHE_ENABLE=0,DATA_CACHE_ENABLE=0</Define>
               <Undefine/>
-              <IncludePath>../Inc;              ../Drivers/STM32G4xx_HAL_Driver/Inc;              ../Drivers/CMSIS/Device/ST/STM32G4xx/Include;              ../Drivers/CMSIS/Include</IncludePath>
+              <IncludePath>../Inc;                  ../Drivers/STM32G4xx_HAL_Driver/Inc;                  ../Drivers/CMSIS/Device/ST/STM32G4xx/Include;                  ../Drivers/CMSIS/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -436,6 +436,11 @@
               <FilePath>../Src/usart.c</FilePath>
             </File>
             <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Src/spi.c</FilePath>
+            </File>
+            <File>
               <FileName>stm32g4xx_it.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/stm32g4xx_it.c</FilePath>
@@ -474,6 +479,11 @@
               <FileName>stm32g4xx_ll_dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32g4xx_ll_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_ll_spi.c</FilePath>
             </File>
             <File>
               <FileName>stm32g4xx_ll_pwr.c</FileName>

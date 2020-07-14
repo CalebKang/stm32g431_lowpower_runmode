@@ -30,13 +30,21 @@
 
 /* USER CODE END 1 */
 
-/** Pinout Configuration
+/** Configure pins as 
+        * Analog 
+        * Input 
+        * Output
+        * EVENT_OUT
+        * EXTI
 */
 void MX_GPIO_Init(void)
 {
 
   /* GPIO Ports Clock Enable */
+  LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOF);
   LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA);
+  LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOB);
+  LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOC);
 
 }
 
