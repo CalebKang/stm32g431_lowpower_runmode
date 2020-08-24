@@ -1,3 +1,8 @@
 # stm32g431_lowpower_runmode
 
-저전력 Lowpower Run 테스트 예제입니다.  Run mode, Lowpower Run mode 에서 번갈아 UART 데이터를 송신합니다.
+LPUART를 이용하여 1초마다 Run - LPRun으로 스위칭 하며 텍스트 출력
+
+LPRun은 HCK 2MHz로 조정함
+
+LPUART GPIO(PA2, 3)을 제외한 모든 GPIO를 Analog Pin으로 설정 함.
+
